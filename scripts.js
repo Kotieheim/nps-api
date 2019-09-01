@@ -1,10 +1,14 @@
 'use strict';
 
-console.log('works yeah?')
+
 
 
 const searchUrl = 'https://api.nps.gov/api/v1/parks';
 const apiKey = 'DkZf3BaYDWFsb4tZ0AiIqCzWeDOp8xGJ7PAK9LrU';
+
+function noResultText() {
+  $('js-error-message').html(`<h2>not a result</h2>`)
+}
 
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
@@ -13,8 +17,11 @@ function formatQueryParams(params) {
   }
   
   function displayResults(responseJson) {
-    console.log(responseJson);
+    let noResult = noResultText();
     $('#results-list').empty();
+    if (responseJson.data.length === 0) {
+      $('#results-list').append(`<p style="color:red;">No results were found, try agian!</p>`);
+    };
     for (let i=0; i<responseJson.data.length; i++) {
       $('#results-list').append(`
         <li><h3>${responseJson.data[i].fullName}</h3>
@@ -31,11 +38,11 @@ function formatQueryParams(params) {
     const params = {
       api_key: apiKey,
       q: query,
-      limit: limit-1,
+      limit: limit,
     };
     const queryString = formatQueryParams(params)
     const url = searchUrl + '?' + queryString;
-    console.log(url);
+    // console.log(url);
   
     fetch(url)
       .then(response => {
