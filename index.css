@@ -13,3 +13,12 @@
   .hidden {
     display: none;
   }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .button {
+    width: 100px;
+  }

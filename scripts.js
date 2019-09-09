@@ -17,6 +17,7 @@ function formatQueryParams(params) {
   }
   
   function displayResults(responseJson) {
+    console.log(responseJson)
     let noResult = noResultText();
     $('#results-list').empty();
     if (responseJson.data.length === 0) {
@@ -37,12 +38,12 @@ function formatQueryParams(params) {
   function getNationalParkInfo(query,limit=10) {
     const params = {
       api_key: apiKey,
-      q: query,
+      stateCode: query,
       limit: limit,
     };
     const queryString = formatQueryParams(params)
     const url = searchUrl + '?' + queryString;
-    // console.log(url);
+    console.log(url);
   
     fetch(url)
       .then(response => {

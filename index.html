@@ -13,13 +13,13 @@
         <h1>Park Finder</h1>
 
             <form id="js-form">
-                <label for="search-term">Search term</label>
-                <input type="text" name="search-term" id="js-search-term" required>
+                <label for="search-term">Search by abbreviation - seperated with a comma.</label>
+                <input type="text" name="search-term" id="js-search-term" placeholder="CA, UT" required>
 
                 <label for="max-results">Max results to return</label>
                 <input type="number" name="max-results" id="js-max-results" value="10">
 
-                <input type="submit" value="Lets look!">
+                <input class="button" type="submit" value="Lets look!">
             </form>
 
             <p id="js-error-message" class="error-message"></p>
